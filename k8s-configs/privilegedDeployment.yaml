@@ -2,29 +2,29 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: snyky
+  name: snyk-deployment
   labels:
-    app.kubernetes.io/name: snyky
-    helm.sh/chart: snyky-0.1.0
-    app.kubernetes.io/instance: snyky
+    app.kubernetes.io/name: snyk-deployment
+    helm.sh/chart: snyk-deployment-0.1.0
+    app.kubernetes.io/instance: snyk-deployment
     app.kubernetes.io/version: "1.0"
     app.kubernetes.io/managed-by: Tiller
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app.kubernetes.io/name: snyky
-      app.kubernetes.io/instance: snyky
+      app.kubernetes.io/name: snyk-deployment
+      app.kubernetes.io/instance: snyk-deployment
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: snyky
-        app.kubernetes.io/instance: snyky
+        app.kubernetes.io/name: snyk-deployment
+        app.kubernetes.io/instance: snyk-deployment
     spec:
       hostPID: true
       containers:
-        - name: snyky
-          image: "garethr/snyky:latest"
+        - name: snyk-deployment
+          image: "orka/snyk-deployment:latest"
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
@@ -40,8 +40,8 @@ spec:
               port: http
           resources:
             {}
-        - name: snyky
-          image: "garethr/snyky:latest"
+        - name: snyk-deployment
+          image: "orka/snyk-deployment:latest"
           imagePullPolicy: IfNotPresent
           ports:
             - name: http

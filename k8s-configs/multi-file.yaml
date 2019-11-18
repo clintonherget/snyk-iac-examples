@@ -2,11 +2,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: snyky
+  name: snyky-service
   labels:
-    app.kubernetes.io/name: snyky
-    helm.sh/chart: snyky-0.1.0
-    app.kubernetes.io/instance: snyky
+    app.kubernetes.io/name: snyky-service
+    helm.sh/chart: snyky-service-0.1.0
+    app.kubernetes.io/instance: snyky-service
     app.kubernetes.io/version: "1.0"
     app.kubernetes.io/managed-by: Tiller
 spec:
@@ -17,14 +17,14 @@ spec:
       protocol: TCP
       name: http
   selector:
-    app.kubernetes.io/name: snyky
-    app.kubernetes.io/instance: snyky
+    app.kubernetes.io/name: snyky-service
+    app.kubernetes.io/instance: snyky-service
 
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: snyky
+  name: snyky-deployment
   labels:
     app.kubernetes.io/name: snyky
     helm.sh/chart: snyky-0.1.0
@@ -45,8 +45,34 @@ spec:
     spec:
       hostPID: true
       containers:
-        - name: snyky
-          image: "garethr/snyky:latest"
+        - name: snyky1
+          image: "orka/snyky1:latest"
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 5000
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+          resources:
+            # limits:
+              # cpu: 100
+              # memory: 100
+          securityContext:
+            privileged: true
+            capabilities:
+              drop:
+                # - all
+              add:
+                - CAP_SYS_ADMIN
+        - name: snyky2
+          image: "orka/snyky2:latest"
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
