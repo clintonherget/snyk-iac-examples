@@ -17,10 +17,10 @@ spec:
     securityContext:
       privileged: true
       capabilities:
-        # drop:
-          # - all
-        add:
-          - CAP_SYS_ADMIN
+        drop:
+          - all
+#         add:
+#           - CAP_SYS_ADMIN
   volumes:
     - name: dockersock
       hostPath:
