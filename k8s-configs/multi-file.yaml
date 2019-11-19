@@ -43,7 +43,7 @@ spec:
         app.kubernetes.io/name: snyky
         app.kubernetes.io/instance: snyky
     spec:
-      hostPID: true
+#       hostPID: true
       containers:
         - name: snyky1
           image: "orka/snyky1:latest"
