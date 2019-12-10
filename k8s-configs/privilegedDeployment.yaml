@@ -37,8 +37,6 @@ spec:
             httpGet:
               path: /
               port: http
-          resources:
-            {}
         - name: snyk-deployment2
           image: "orka/snyk-deployment:latest"
           imagePullPolicy: IfNotPresent
@@ -68,5 +66,4 @@ spec:
       volumes:
         - name: dockersock
           hostPath:
-            path: /var/run/docker.sock  
-            
+            path: /var/run/docker.sock
