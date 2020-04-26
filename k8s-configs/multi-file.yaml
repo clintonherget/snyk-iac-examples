@@ -94,7 +94,7 @@ spec:
             privileged: true
             capabilities:
               drop:
-                - all
+                - ALL
 #               add:
 #                 - CAP_SYS_ADMIN
       volumes:
