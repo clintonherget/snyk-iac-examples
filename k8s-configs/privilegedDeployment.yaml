@@ -22,7 +22,7 @@ spec:
     spec:
       hostPID: true
       containers:
-        - name: snyk-deployment103
+        - name: snyk-deployment104
           image: "orka/snyk-deployment:latest"
           imagePullPolicy: IfNotPresent
           ports:
