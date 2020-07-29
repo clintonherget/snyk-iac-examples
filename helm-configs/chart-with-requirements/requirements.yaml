@@ -8,3 +8,6 @@ dependencies:
     condition: mariadb.enabled
     tags:
       - wordpress-database
+  - name: nginx-ingress
+    version: 0.6.0
+    repository: https://helm.nginx.com/stable
