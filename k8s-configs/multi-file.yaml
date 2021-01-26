@@ -65,7 +65,7 @@ spec:
               # cpu: 100
               # memory: 100
           securityContext:
-            privileged: true
+            privileged: false
             capabilities:
               drop:
                 - all
